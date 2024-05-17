@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: app-container
-        image: docker.io/kenphung/app-deploy-statecontroller:latest
+        image: docker.io/kenphung/app-deploy:latest
         command:
         - sleep
         - "100000"

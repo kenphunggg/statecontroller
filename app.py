@@ -14,8 +14,8 @@ def printAll():
   cnx = mysql.connector.connect(
     user = 'kenphung', 
     password = 'PQThai29112003', 
-    # host = f'{os.getenv("USER_IP")}',
-    host = 'localhost',
+    host = f'{os.getenv("USER_IP")}',
+    # host = 'localhost',
     database = 'randomNumberDB', 
     port = '3306'
     )
