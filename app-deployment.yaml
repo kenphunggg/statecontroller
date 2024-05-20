@@ -23,7 +23,7 @@ spec:
         - "100000"
         env:
         - name: USER_IP
-          value: "10.233.69.43"
+          value: "10.233.69.50"
           #mysql pod ip address
         ports:
         - containerPort: 5000

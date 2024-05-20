@@ -7,7 +7,7 @@ spec:
   - port: 3306
   selector:
     app: mysql
-  clusterIP: None
+  # clusterIP: None
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -17,8 +17,6 @@ spec:
   selector:
     matchLabels:
       app: mysql
-  strategy:
-    type: Recreate
   template:
     metadata:
       labels:
@@ -26,9 +24,17 @@ spec:
     spec:
       containers:
       - image: mysql:5.7
-        name: mysql
+        name: mysql       
+        # command:
+        # - /bin/bash
+        # - mysql -u root -pPQThai29112003
+        # - CREATE DATABASE randomNumberDB;
+        # - USE randomNumberDB;
+        # - CREATE TABLE randomNumberTable (randomNumber int);
         env:
           # Use secret in real usage
+        - name: USER
+          value: 999:999
         - name: MYSQL_ROOT_PASSWORD
           value: 'PQThai29112003'
         - name: MYSQL_DATABASE
@@ -45,7 +51,7 @@ spec:
           name: mysql
         volumeMounts:
         - name: mysql-data
-          mountPath: /data/db
+          mountPath: /var/lib/mysql
       volumes:
       - name: mysql-data
         persistentVolumeClaim:

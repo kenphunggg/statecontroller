@@ -10,10 +10,13 @@ spec:
   capacity:
     storage: 20Gi
   accessModes:
-    - ReadWriteOnce
-  nfs: 
-    server: 192.168.122.10
-    path: /data/db
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  # nfs: 
+  #   server: 192.168.122.10
+  #   path: /data/db
+  hostPath:
+    path: '/data/db'
 ---
 
 # PERSISTENT VOLUME CLAIM
@@ -24,7 +27,7 @@ metadata:
 spec:
   storageClassName: manual
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 20Gi
